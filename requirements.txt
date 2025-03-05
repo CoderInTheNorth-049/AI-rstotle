@@ -5,3 +5,4 @@ typing-extensions>=4.5.0
 agno
 google-search-results==2.4.2
 arxiv
+phi
