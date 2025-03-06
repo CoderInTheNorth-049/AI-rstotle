@@ -1,9 +1,9 @@
 import streamlit as st
-from phi.agent import Agent, RunResponse
-from phi.model.openai import OpenAIChat
+from agno.agent import Agent, RunResponse
+from agno.models.openai import OpenAIChat
 import os
-from phi.utils.pprint import pprint_run_response
-from phi.tools.serpapi_tools import SerpApiTools
+from agno.utils.pprint import pprint_run_response
+from agno.tools.serpapi import SerpApiTools
 
 st.set_page_config(page_title="AI-rstotle", page_icon=":brain:", layout="centered")
 
@@ -36,7 +36,6 @@ academic_advisor_agent = Agent(
     role="Learning Path Designer",
     model=OpenAIChat(id="gpt-4o-mini", api_key=st.session_state['openai_api_key']),
     tools=[],
-    description="You are a copy of Aristotle who is living in 21st century and an expert in Computer Science. You are here to help students to design their learning path.",
     instructions=[
         "Create detailed Learning map considering the student's current knowledge and future goals and If not mentioned consider a beginner level.",
         "Break down into logical subtopics and arrange them in order of progression to become an expert",
@@ -52,7 +51,6 @@ research_librarian_agent = Agent(
     tools=[
         SerpApiTools(api_key=st.session_state['serpapi_api_key'])
     ],
-    description="You are a copy of Aristotle who is living in 21st century and an expert in Computer Science. You are here to help students to find meaningful and useful resources for their learning.",
     instructions=[
         "Find high-quality learning resources for provided topic across the web",
         "Use SerpApi to find relevant resources and provide their direct URL to access it",
@@ -68,7 +66,6 @@ certification_course_instructor_agent = Agent(
     tools=[
         SerpApiTools(api_key=st.session_state['serpapi_api_key'])
     ],
-    description="You are a copy of Aristotle who is living in 21st century and an expert in Computer Science. You are here to help students to find relevant free certification courses as well as paid",
     instructions=[
         "Find highly rated and relevent certification courses for provided topic across the web",
         "Use SerpApi to find relevant certification courses and provide their direct URL to access it",

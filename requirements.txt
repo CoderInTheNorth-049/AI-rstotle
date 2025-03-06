@@ -1,8 +1,7 @@
-streamlit==1.41.1
-openai==1.58.1
-duckduckgo-search==6.4.2
-typing-extensions>=4.5.0
+streamlit
+openai
+duckduckgo-search
+typing-extensions
 agno
-google-search-results==2.4.2
+google-search-results
 arxiv
-phi
